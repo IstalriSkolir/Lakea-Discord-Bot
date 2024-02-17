@@ -1,0 +1,6 @@
+name:Woodland Rangers
+id:1019881518270783529
+member_join_channel:1019881518862192722
+member_join_message:Hey there {member}! Welcome to the Woodland Rangers! Please read the server rules and react with a thumbs up to confirm you've read them! Check out #reaction-roles to assign yourself new roles!
+monster_battles_scoreboard_channel:1198262468766617691
+monster_battles_characters_path:X:|1-APPLICATIONDATA|LIVEDATA|Creatures|Characters

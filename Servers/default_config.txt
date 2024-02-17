@@ -1,0 +1,6 @@
+name:Default Config
+id:N/A
+member_join_channel:-1
+member_join_message:DISABLED
+monster_battles_scoreboard_channel:DISABLED
+monster_battles_characters_path:N/A

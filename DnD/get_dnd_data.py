@@ -1,0 +1,117 @@
+#from DnD.monsters import get_monster_data
+#from DnD.spells import get_spell_data
+from make_requests import get_request_json
+from DnD.Message_Builder.message_builder import dnd_message_builder
+import logger, random
+
+API_URL = "https://www.dnd5eapi.co/api/"
+API_URL_BASE = "https://www.dnd5eapi.co"
+
+def get_dnd_data(command_array):
+    try:
+        if(len(command_array) > 1):
+            arg = command_array[1]
+            if(arg in options_dict):
+                if(arg != "options"):
+                    data = {}
+                    if(len(command_array) > 2):
+                        data = get_defined_object(options_dict[arg], command_array)
+                    else:
+                        data = get_random_object(options_dict[arg])
+                    if not ("error" in data):
+                        message_builder = dnd_message_builder()
+                        return {"message": message_builder.build_message_array(data)}
+                    else:
+                        return data
+                else:
+                    return {"error": get_dnd_options()}
+            else:
+                message = f"I don't recognise !dnd {arg} sorry! Try one of the following: !dnd\n\n"
+                for key in options_dict:
+                    message += "- " + key + "\n"
+                return {"error": message}
+        else:
+            return {"error": "I don't know what you want me to do, give me some more information such as '!dnd monsters'. Type '!dnd options' for more options"}
+    except Exception as error:
+        logger.log(error)
+        return {"error": "I'm sorry, I'm having some issues figuring that out right now. Ask me again later!"}    
+
+def get_dnd_options():
+    message = "I can get you information on different elements of D&D! Use commands such as '!dnd monsters' to get more information on different areas! Oprions include !dnd \n\n"
+    for key in options_dict:
+        message += f"- {key}\n"
+    return message
+
+def get_defined_object(obj_type, command_array):
+    obj_name = ""
+    for x in range(2, len(command_array)):
+        obj_name += command_array[x] + "-"
+    obj_name = obj_name[:-1]
+    list_data = get_request_json(f"{API_URL}{obj_type}/")
+    found = False
+    obj_url = ""
+    for obj in list_data['results']:
+        if(obj_name == obj['index']):
+            found = True
+            obj_url = f"{API_URL_BASE}{obj['url']}"
+            break
+    if(found is False):
+        return {"error": f"Sorry, I'm not sure what a {obj_name.replace('-', ' ')} is!"}
+    return get_request_json(obj_url)
+
+def get_random_object(obj_type):
+    list_data = get_request_json(f"{API_URL}{obj_type}")
+    obj_item = random.choice(list_data['results'])
+    return get_request_json(f"{API_URL_BASE}{obj_item['url']}")
+
+options_dict = {
+    "options": "options",
+    "monsters": "monsters",
+    "monster": "monsters",
+    "-m": "monsters",
+    "spells": "spells",
+    "spell": "spells",
+    "-s": "spells"
+}
+
+
+
+
+
+
+'''
+def get_dnd_data(command_array):
+    try:
+        if(len(command_array) > 1):
+            arg = command_array[1]
+            if(arg in commands_dict):
+                reply_string = commands_dict[arg](command_array)
+                reply_list = reply_string.split("\n\n")
+                return reply_list
+            else:
+                message = [f"I don't recognise !dnd {arg} sorry! Try one of the following: !dnd\n\n"]
+                for key in commands_dict:
+                    message[0] += "- " + key + "\n"
+                return message
+        else:
+            return ["I don't know what you want me to do, give me some more information such as '!dnd monsters'. Type '!dnd options' for more options"]
+    except Exception as error:
+        logger.log(error)
+    return ""
+
+def get_dnd_options(command_array):
+    message = "I can get you information on different elements of D&D! Use commands such as '!dnd monsters' to get more information on different areas! Oprions include !dnd \n\n"
+    for key in commands_dict:
+        message += f"- {key}\n"
+    return message
+
+commands_dict = {
+    "options": get_dnd_options,
+    "monsters": get_monster_data,
+    "monster": get_monster_data,
+    "-m": get_monster_data,
+    "spells": get_spell_data,
+    "spell": get_spell_data,
+    "-s": get_spell_data
+}
+'''
