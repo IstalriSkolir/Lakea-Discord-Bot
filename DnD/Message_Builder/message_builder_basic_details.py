@@ -16,7 +16,7 @@ class dnd_basic_details:
             message += f"**Level:** {spell_levels[data['level']]} Level {data['school']['name']}"
         if(data['ritual'] == True):
             message += " (ritual)\n"
-        message += f"**Casting Time:** {data['casting_time']}\n**Range:** {data['range']}\n**Components:** "
+        message += f"**\nCasting Time:** {data['casting_time']}\n**Range:** {data['range']}\n**Components:** "
         for component in data['components']:
             message += f"{component} "
         if(data['concentration'] == True):

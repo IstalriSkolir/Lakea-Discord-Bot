@@ -43,3 +43,23 @@ spell_levels = {
     8: "8th",
     9: "9th"
 }
+
+message_part_order = {
+    "add_basic_details": 1,
+    "add_ability_details": 2,
+    "add_language_details": 3,
+    "add_speed_details": 4,
+    "add_sense_details": 5,
+    "add_proficiency_details": 6,
+    "add_damage_vulnerability_details": 7,
+    "add_damage_resistance_details": 8,
+    "add_damage_immunity_details": 9,
+    "add_condition_immunity_details": 10,
+    "add_special_ability_details": 11,
+    "add_action_details": 12,
+    "add_reaction_details": 13,
+    "add_legendary_action_details": 14,
+    "add_classes_details": 15,
+    "add_description_details": 16,
+    "add_higher_level_details": 17
+}
