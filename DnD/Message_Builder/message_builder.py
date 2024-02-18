@@ -49,10 +49,14 @@ class dnd_message_builder:
         if(self.basic_details_added == False):
             self.basic_details_added = True
             url = data['url']
-            if("monsters" in url):
+            if("ability-scores" in url):
+                return {message_part_order['add_basic_details']: self.basic_details.add_basic_ability_details(data)}
+            elif("monsters" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_monster_details(data)}
             elif("spells" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_spell_details(data)}
+            else:
+                return {-1: ""}
         else:
             return {-1: ""}
 
@@ -190,6 +194,16 @@ class dnd_message_builder:
         else:
             return{-1: ""}  
 
+    def add_skill_details(self, data):
+        skills = data['skills']
+        if(len(skills) > 0):
+            message = "**Skills: **\n"
+            for skill in skills:
+                message += f"- {skill['name']}\n"
+            return {message_part_order['add_skill_details']: message}
+        else:
+            return {-1: ""}
+
     def add_special_ability_details(self, data):
         special_abilities = data['special_abilities']
         if(len(special_abilities) > 0):
@@ -241,6 +255,7 @@ class dnd_message_builder:
         "legendary_actions": add_legendary_action_details,
         "reactions": add_reaction_details,
         "senses": add_sense_details,
+        "skills": add_skill_details,
         "special_abilities": add_special_ability_details,
         "speed": add_speed_details
     }

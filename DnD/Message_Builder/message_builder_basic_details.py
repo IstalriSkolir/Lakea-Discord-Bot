@@ -24,3 +24,6 @@ class dnd_basic_details:
         else:
             message += f"\n**Duration:** {data['duration']}"
         return message
+    
+    def add_basic_ability_details(self, data):
+        return f"**Name:** {data['full_name']}\n"

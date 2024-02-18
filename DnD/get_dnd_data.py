@@ -66,6 +66,9 @@ def get_random_object(obj_type):
 
 options_dict = {
     "options": "options",
+    "abilityscores": "ability-scores",
+    "ability-scores": "ability-scores",
+    "-ab": "ability-scores",
     "monsters": "monsters",
     "monster": "monsters",
     "-m": "monsters",

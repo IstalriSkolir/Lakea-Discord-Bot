@@ -61,5 +61,6 @@ message_part_order = {
     "add_legendary_action_details": 14,
     "add_classes_details": 15,
     "add_description_details": 16,
-    "add_higher_level_details": 17
+    "add_skill_details": 17,
+    "add_higher_level_details": 18
 }
