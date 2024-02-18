@@ -27,3 +27,6 @@ class dnd_basic_details:
     
     def add_basic_ability_details(self, data):
         return f"**Name:** {data['full_name']}\n"
+    
+    def add_basic_alignment_details(self, data):
+        return f"**Name:** {data['name']} ({data['abbreviation']})"

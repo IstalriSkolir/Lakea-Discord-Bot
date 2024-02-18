@@ -69,6 +69,9 @@ options_dict = {
     "abilityscores": "ability-scores",
     "ability-scores": "ability-scores",
     "-ab": "ability-scores",
+    "alignments": "alignments",
+    "alignment": "alignments",
+    "-a": "alignments",
     "monsters": "monsters",
     "monster": "monsters",
     "-m": "monsters",
@@ -76,45 +79,3 @@ options_dict = {
     "spell": "spells",
     "-s": "spells"
 }
-
-
-
-
-
-
-'''
-def get_dnd_data(command_array):
-    try:
-        if(len(command_array) > 1):
-            arg = command_array[1]
-            if(arg in commands_dict):
-                reply_string = commands_dict[arg](command_array)
-                reply_list = reply_string.split("\n\n")
-                return reply_list
-            else:
-                message = [f"I don't recognise !dnd {arg} sorry! Try one of the following: !dnd\n\n"]
-                for key in commands_dict:
-                    message[0] += "- " + key + "\n"
-                return message
-        else:
-            return ["I don't know what you want me to do, give me some more information such as '!dnd monsters'. Type '!dnd options' for more options"]
-    except Exception as error:
-        logger.log(error)
-    return ""
-
-def get_dnd_options(command_array):
-    message = "I can get you information on different elements of D&D! Use commands such as '!dnd monsters' to get more information on different areas! Oprions include !dnd \n\n"
-    for key in commands_dict:
-        message += f"- {key}\n"
-    return message
-
-commands_dict = {
-    "options": get_dnd_options,
-    "monsters": get_monster_data,
-    "monster": get_monster_data,
-    "-m": get_monster_data,
-    "spells": get_spell_data,
-    "spell": get_spell_data,
-    "-s": get_spell_data
-}
-'''

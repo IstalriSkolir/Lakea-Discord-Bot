@@ -51,6 +51,8 @@ class dnd_message_builder:
             url = data['url']
             if("ability-scores" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_ability_details(data)}
+            elif("alignments" in url):
+                return {message_part_order['add_basic_details']: self.basic_details.add_basic_alignment_details(data)}
             elif("monsters" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_monster_details(data)}
             elif("spells" in url):
