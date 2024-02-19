@@ -12,7 +12,8 @@ def get_dnd_data(command_array):
         if(len(command_array) > 1):
             arg = command_array[1]
             if(arg in options_dict):
-                if(arg != "options"):
+                option = options_dict[arg]
+                if(option != "options"):
                     data = {}
                     if(len(command_array) > 2):
                         data = get_defined_object(options_dict[arg], command_array)
@@ -27,19 +28,19 @@ def get_dnd_data(command_array):
                     return {"error": get_dnd_options()}
             else:
                 message = f"I don't recognise !dnd {arg} sorry! Try one of the following: !dnd\n\n"
-                for key in options_dict:
-                    message += "- " + key + "\n"
+                for option in options_list:
+                    message += "- " + option + "\n"
                 return {"error": message}
         else:
-            return {"error": "I don't know what you want me to do, give me some more information such as '!dnd monsters'. Type '!dnd options' for more options"}
+            return {"error": get_dnd_options()}
     except Exception as error:
         logger.log(error)
         return {"error": "I'm sorry, I'm having some issues figuring that out right now. Ask me again later!"}    
 
 def get_dnd_options():
     message = "I can get you information on different elements of D&D! Use commands such as '!dnd monsters' to get more information on different areas! Oprions include !dnd \n\n"
-    for key in options_dict:
-        message += f"- {key}\n"
+    for option in options_list:
+        message += f"- {option}\n"
     return message
 
 def get_defined_object(obj_type, command_array):
@@ -66,6 +67,8 @@ def get_random_object(obj_type):
 
 options_dict = {
     "options": "options",
+    "option": "options",
+    "-o": "options",
     "abilityscores": "ability-scores",
     "ability-scores": "ability-scores",
     "-ab": "ability-scores",
@@ -82,3 +85,12 @@ options_dict = {
     "spell": "spells",
     "-s": "spells"
 }
+
+options_list = [
+    "options (-o)",
+    "ability-scores (-ab)",
+    "alignments (-a)",
+    "conditions (-co)",
+    "monsters (-m)",
+    "spells (-s)"
+]
