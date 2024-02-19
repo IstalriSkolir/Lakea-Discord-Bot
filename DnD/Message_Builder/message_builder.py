@@ -53,6 +53,8 @@ class dnd_message_builder:
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_ability_details(data)}
             elif("alignments" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_alignment_details(data)}
+            elif("conditions" in url):
+                return {message_part_order['add_basic_details']: self.basic_details.add_basic_condition_details(data)}
             elif("monsters" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_monster_details(data)}
             elif("spells" in url):
@@ -129,9 +131,19 @@ class dnd_message_builder:
                 desc = data['desc'].replace("\n\n", "\n")
                 message = f"\n**Description:**\n{desc}"
             elif(isinstance(data['desc'], list)):
-                message = f"\n**Description:**\n"
-                for line in data['desc']:
-                    message += line.replace("\n\n", "\n")
+                is_list = True
+                for string in data['desc']:
+                    if (string.startswith("- ") == False):
+                        is_list = False
+                        break 
+                if (is_list == False):
+                    message = f"\n**Description:**\n"
+                    for line in data['desc']:
+                        message += line.replace("\n\n", "\n")
+                else:
+                    message = f"\n**Description:**\n"
+                    for line in data['desc']:
+                        message += f"{line}\n"
             return {message_part_order["add_description_details"]: message}
         else:
             return {-1: ""}

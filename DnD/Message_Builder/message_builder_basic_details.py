@@ -30,3 +30,6 @@ class dnd_basic_details:
     
     def add_basic_alignment_details(self, data):
         return f"**Name:** {data['name']} ({data['abbreviation']})"
+    
+    def add_basic_condition_details(self, data):
+        return f"**Name:** {data['name']}"
