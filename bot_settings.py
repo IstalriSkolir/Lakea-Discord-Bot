@@ -16,5 +16,5 @@ class bot_settings:
             settings_dict.update({parts[0]: parts[1]})
         self.discord_token = os.environ["DISCORD_BOT_TOKEN"]
         self.path_seperator = settings_dict["path_seperator"]
-        self.twitch_app_id = os.environ["TWITCH_APP_ID"]
-        self.twitch_app_secret = os.environ["TWITCH_APP_SECRET"]
+        #self.twitch_app_id = os.environ["TWITCH_APP_ID"]
+        #self.twitch_app_secret = os.environ["TWITCH_APP_SECRET"]
