@@ -38,7 +38,7 @@ def get_dnd_data(command_array):
         return {"error": "I'm sorry, I'm having some issues figuring that out right now. Ask me again later!"}    
 
 def get_dnd_options():
-    message = "I can get you information on different elements of D&D! Use commands such as '!dnd monsters' to get more information on different areas! Oprions include !dnd \n\n"
+    message = "I can get you information on different elements of D&D! Use commands such as '!dnd monsters' to get more information on different areas! Options include !dnd \n\n"
     for option in options_list:
         message += f"- {option}\n"
     return message

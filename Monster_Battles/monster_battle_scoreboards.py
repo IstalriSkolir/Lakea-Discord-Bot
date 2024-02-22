@@ -39,10 +39,8 @@ class monster_battles_scoreboard:
         characters = sorted(characters, key = lambda x: (x.level, x.xp), reverse=True)
         characters = characters[:10]
         print("Creating New Scoreboard...")
-        #message = self.create_message_string(characters)
         image = create_scoreboard(characters, self.settings.path_seperator)
         print("Updating Scoreboard Message...")
-        #asyncio.run_coroutine_threadsafe(self.update_scoreboard_message(message), self.event_loop)
         asyncio.run_coroutine_threadsafe(self.update_scoreboard_message(image), self.event_loop)
 
     def get_character_list(self, characters_path):
