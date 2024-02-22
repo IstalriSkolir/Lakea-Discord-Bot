@@ -59,6 +59,8 @@ class dnd_message_builder:
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_monster_details(data)}
             elif("spells" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_spell_details(data)}
+            elif("skills" in url):
+                return {message_part_order['add_basic_details']: self.basic_details.add_basic_skill_details(data)}
             else:
                 return {-1: ""}
         else:

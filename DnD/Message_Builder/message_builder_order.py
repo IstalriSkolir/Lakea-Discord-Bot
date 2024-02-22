@@ -2,7 +2,6 @@ def dnd_order_message(message_dict):
     key_list = list(message_dict)
     key_list.sort()
     message_list = []
-    #print(message_dict[16])
     for key in key_list:
         segments = check_segment_length(message_dict[key])
         for segment in segments:

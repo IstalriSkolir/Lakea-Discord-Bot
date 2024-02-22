@@ -81,6 +81,9 @@ options_dict = {
     "monsters": "monsters",
     "monster": "monsters",
     "-m": "monsters",
+    "skills": "skills",
+    "skill": "skills",
+    "-sk": "skills",
     "spells": "spells",
     "spell": "spells",
     "-s": "spells"
@@ -92,5 +95,6 @@ options_list = [
     "alignments (-a)",
     "conditions (-co)",
     "monsters (-m)",
+    "skills (-sk)",
     "spells (-s)"
 ]
