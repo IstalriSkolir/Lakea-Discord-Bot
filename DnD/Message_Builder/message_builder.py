@@ -63,6 +63,8 @@ class dnd_message_builder:
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_skill_details(data)}
             elif("traits" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_trait_details(data)}
+            elif("languages" in url):
+                return {message_part_order['add_basic_details']: self.basic_details.add_basic_language_details(data)}
             else:
                 return {-1: ""}
         else:
@@ -179,10 +181,6 @@ class dnd_message_builder:
             return{-1: ""}         
 
     def add_proficiency_details(self, data):
-        #proficiencies = {}
-        #if("proficiencies" in data):
-        #    proficiencies = data['proficiencies']
-        #if("profic")
         proficiencies = data['proficiencies']
         if(len(proficiencies) > 0):
             message = "**Proficiencies:**\n"
@@ -248,6 +246,16 @@ class dnd_message_builder:
         message = message[:-2] + "\n"
         return {message_part_order["add_speed_details"]: message}        
 
+    def add_typical_speaker_details(self, data):
+        speakers = data['typical_speakers']
+        if(len(speakers) > 0):
+            message = "**Typical Speakers:**"
+            for speaker in speakers:
+                message += f"\n- {speaker}"
+            return {message_part_order['add_typical_speaker_details']: message} 
+        else:
+            return {-1: ""}
+
     key_dict = {
         "strength": add_ability_details,
         "dexterity": add_ability_details,
@@ -282,5 +290,6 @@ class dnd_message_builder:
         "senses": add_sense_details,
         "skills": add_skill_details,
         "special_abilities": add_special_ability_details,
-        "speed": add_speed_details
+        "speed": add_speed_details,
+        "typical_speakers": add_typical_speaker_details
     }

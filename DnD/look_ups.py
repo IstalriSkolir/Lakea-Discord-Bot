@@ -62,5 +62,6 @@ message_part_order = {
     "add_classes_details": 15,
     "add_description_details": 16,
     "add_skill_details": 17,
-    "add_higher_level_details": 18
+    "add_higher_level_details": 18,
+    "add_typical_speaker_details": 19
 }

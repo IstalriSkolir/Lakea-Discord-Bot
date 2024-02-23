@@ -38,4 +38,7 @@ class dnd_basic_details:
         return f"**Name:** {data['name']}"
     
     def add_basic_trait_details(self, data):
-        return f"**name:** {data['name']}"
+        return f"**Name:** {data['name']}"
+
+    def add_basic_language_details(self, data):
+        return f"**Name:** {data['name']}\n**Type:** {data['type']}\n**Script:** {data['script']}"
