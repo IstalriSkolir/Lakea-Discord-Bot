@@ -79,6 +79,9 @@ options_dict = {
     "languages": "languages",
     "language": "languages",
     "-l": "languages",
+    "magic-schools": "magic-schools",
+    "magicschools": "magic-schools",
+    "-ms": "magic-schools",
     "monsters": "monsters",
     "monster": "monsters",
     "-m": "monsters",
@@ -99,6 +102,7 @@ options_list = [
     "alignments (-a)",
     "conditions (-co)",
     "languages (-l)",
+    "magic-schools (-ms)"
     "monsters (-m)",
     "skills (-sk)",
     "spells (-s)",
