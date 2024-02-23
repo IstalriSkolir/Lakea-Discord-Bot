@@ -76,6 +76,9 @@ options_dict = {
     "conditions": "conditions",
     "condition": "conditions",
     "-co": "conditions",
+    "languages": "languages",
+    "language": "languages",
+    "-l": "languages",
     "monsters": "monsters",
     "monster": "monsters",
     "-m": "monsters",
@@ -95,7 +98,9 @@ options_list = [
     "ability-scores (-ab)",
     "alignments (-a)",
     "conditions (-co)",
+    "languages (-l)",
     "monsters (-m)",
     "skills (-sk)",
-    "spells (-s)"
+    "spells (-s)",
+    "traits (-t)"
 ]
