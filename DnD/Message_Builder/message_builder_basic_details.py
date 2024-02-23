@@ -36,3 +36,6 @@ class dnd_basic_details:
     
     def add_basic_skill_details(self, data):
         return f"**Name:** {data['name']}"
+    
+    def add_basic_trait_details(self, data):
+        return f"**name:** {data['name']}"
