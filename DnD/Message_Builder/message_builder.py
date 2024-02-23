@@ -61,6 +61,8 @@ class dnd_message_builder:
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_spell_details(data)}
             elif("skills" in url):
                 return {message_part_order['add_basic_details']: self.basic_details.add_basic_skill_details(data)}
+            elif("traits" in url):
+                return {message_part_order['add_basic_details']: self.basic_details.add_basic_trait_details(data)}
             else:
                 return {-1: ""}
         else:
@@ -177,11 +179,18 @@ class dnd_message_builder:
             return{-1: ""}         
 
     def add_proficiency_details(self, data):
+        #proficiencies = {}
+        #if("proficiencies" in data):
+        #    proficiencies = data['proficiencies']
+        #if("profic")
         proficiencies = data['proficiencies']
         if(len(proficiencies) > 0):
             message = "**Proficiencies:**\n"
             for proficiency in proficiencies:
-                message += f"- {proficiency['proficiency']['name']}: {proficiency['value']}\n"
+                if("proficiency" in proficiency):
+                    message += f"- {proficiency['proficiency']['name']}: {proficiency['value']}\n"
+                else:
+                    message += f"- {proficiency['name']}"
             return {message_part_order["add_proficiency_details"]: message} 
         else:
             return{-1: ""}

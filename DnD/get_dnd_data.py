@@ -1,5 +1,3 @@
-#from DnD.monsters import get_monster_data
-#from DnD.spells import get_spell_data
 from make_requests import get_request_json
 from DnD.Message_Builder.message_builder import dnd_message_builder
 import logger, random
@@ -86,7 +84,10 @@ options_dict = {
     "-sk": "skills",
     "spells": "spells",
     "spell": "spells",
-    "-s": "spells"
+    "-s": "spells",
+    "traits": "traits",
+    "trait": "traits",
+    "-t": "traits"
 }
 
 options_list = [
