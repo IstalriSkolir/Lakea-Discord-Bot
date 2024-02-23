@@ -42,3 +42,6 @@ class dnd_basic_details:
 
     def add_basic_language_details(self, data):
         return f"**Name:** {data['name']}\n**Type:** {data['type']}\n**Script:** {data['script']}"
+    
+    def add_basic_magic_school_details(self, data):
+        return f"**Name: ** {data['name']}"
