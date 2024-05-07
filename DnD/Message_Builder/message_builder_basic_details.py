@@ -45,3 +45,6 @@ class dnd_basic_details:
     
     def add_basic_magic_school_details(self, data):
         return f"**Name: ** {data['name']}"
+    
+    def add_basic_damage_type_details(self, data):
+        return f"**Name: ** {data['name']}"
