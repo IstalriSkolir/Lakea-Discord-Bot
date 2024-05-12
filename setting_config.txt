@@ -1,1 +1,2 @@
-path_seperator:\
+PATH_SEPERATOR:\
+RESOURCE_PATH:X:\\1-APPLICATIONDATA\\DEVENV\\DiscordBot

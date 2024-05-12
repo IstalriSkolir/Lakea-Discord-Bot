@@ -1,28 +1,28 @@
 from PIL import Image, ImageDraw, ImageFont
 import logger, string
 
-def create_scoreboard(characters, path_seperator):
+def create_scoreboard(characters, path_seperator, resource_path):
     try:
         image_name = "monster_battles_scoreboard.png"
-        image = load_base_image(path_seperator)
+        image = load_base_image(path_seperator, resource_path)
         canvas = ImageDraw.Draw(image)
-        canvas = write_character_data(canvas, characters, path_seperator)
+        canvas = write_character_data(canvas, characters, path_seperator, resource_path)
         image.save(image_name)
         return image_name
     except Exception as error:
         logger.log(error)
 
-def load_base_image(path_seperator):
+def load_base_image(path_seperator, resource_path):
     try:
-        image = Image.open(f"Resources{path_seperator}MonsterScoreboard.png")
+        image = Image.open(f"{resource_path}{path_seperator}Resources{path_seperator}MonsterScoreboard.png")
         return image
     except Exception as error:
         logger.log(error)
         return Image.new(mode = "RGB", size = (1500, 1500), color = (0, 150, 0))
     
-def write_character_data(canvas, characters, path_seperator):
-    font = ImageFont.truetype(f"Resources{path_seperator}Cataneo_BT.ttf", 60)
-    font_bold = ImageFont.truetype(f"Resources{path_seperator}Cataneo_BT_Bold.ttf", 60)
+def write_character_data(canvas, characters, path_seperator, resource_path):
+    font = ImageFont.truetype(f"{resource_path}{path_seperator}Resources{path_seperator}Cataneo_BT.ttf", 60)
+    font_bold = ImageFont.truetype(f"{resource_path}{path_seperator}Resources{path_seperator}Cataneo_BT_Bold.ttf", 60)
     for x in range(len(characters)):
         character_name = edit_character_name(characters[x].name)
         character_xp = edit_character_xp(str(characters[x].xp))
