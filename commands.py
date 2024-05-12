@@ -5,6 +5,7 @@ import logger
 class commands:
     client = {}
     servers = {}
+    settings = {}
 
     def __init__(self, client, servers):
         self.client = client

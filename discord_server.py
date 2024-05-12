@@ -14,7 +14,7 @@ class server:
 
     def __init__(self, settings, guild, client, event_loop):
         self.settings = settings
-        config = discord_server_config.load_server_config(guild.id, settings.path_seperator)
+        config = discord_server_config.load_server_config(guild.id, settings.path_seperator, settings.resource_path)
         self.client = client
         self.guild = guild
         self.id = guild.id
