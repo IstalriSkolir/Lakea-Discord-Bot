@@ -54,6 +54,8 @@ def edit_character_xp(xp):
             if(((x + 1) % 3) == 0 and x != 0):
                 new_xp += "'"
         new_xp = new_xp[::-1]
+        if new_xp[0] == "'":
+            new_xp = new_xp[1:]
     else:
         return xp   
     return new_xp
